@@ -1,9 +1,11 @@
+var path = require('path');
+
 module.exports = {
   mode: 'development',
   entry: "./src/index.tsx",
 
   output: {
-    filename: "main.js",
+    filename: "bundle.js",
     path: __dirname + "/dist"
   },
 
@@ -13,9 +15,20 @@ module.exports = {
     extensions: [".ts", ".tsx", '.js']
   },
 
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    inline: true,
+    hot: true,
+    host: "localhost",
+    port: 8080,
+    open: true
+  },
+
+
   module: {
     rules: [
       { test: /\.tsx?$/, loader: "ts-loader" },
+      { test: /\.css$/, use: ['style-loader', 'css-loader']},
     ]
   },
 };

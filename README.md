@@ -1,2 +1,2 @@
 # type_script_react_template
-React.js with typescript template project.
+React.js with typescript template project for qucik setup.
